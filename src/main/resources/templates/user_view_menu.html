@@ -10,6 +10,13 @@
 	<div th:if="${param.added}">
 		<div class="alert alert-info">Item added to cart!</div>
 	</div>
+	<div class="topnav">
+		<div sec:authorize="isAuthenticated()"><a class="active" th:href="@{/logout}">Logout</a></div>
+		<a th:href="@{/user_homepage}">Homepage</a>
+		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
+		<a th:href="@{/user_order_kitchen}">Order Food</a>
+		<a th:href="@{/user_view_cart}">View Cart</a>
+	</div>
     <h1>Add Items To Your Cart</h1>
     
     <br/><br/>
@@ -37,9 +44,6 @@
             
         </tbody>
     </table>
-    
-    	<div><a href="/user_view_cart">Click here to view your cart </a><div>
-    	<div><a href="/user_homepage">Return to homepage</a></div>
 </div> 
 
 <div align="center">

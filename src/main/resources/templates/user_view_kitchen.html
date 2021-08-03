@@ -6,7 +6,14 @@
 <title>Select Kitchen</title>
 </head>
 <body>
-<div align="center">
+	<div class="topnav">
+		<div sec:authorize="isAuthenticated()"><a class="active" th:href="@{/logout}">Logout</a></div>
+		<a th:href="@{/user_homepage}">Homepage</a>
+		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
+		<a th:href="@{/user_order_kitchen}">Order Food</a>
+		<a th:href="@{/user_view_cart}">View Cart</a>
+	</div>
+	<div align="center">
     <h1>Choose A Kitchen To Order From</h1>
     
     <br/><br/>
@@ -32,9 +39,6 @@
             
         </tbody>
     </table>
-    
-    	<div><a href="/user_view_cart">Click here to view your cart </a><div>
-    	<div><a href="/user_homepage">Return to homepage</a></div>
 </div> 
 
 <div align="center">

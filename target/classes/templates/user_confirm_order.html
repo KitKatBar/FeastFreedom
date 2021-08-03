@@ -3,47 +3,47 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8"/>
-<title>Order Menu</title>
+<title>Dish Manager</title>
 </head>
 <body>
 <div align="center">
 	<div th:if="${param.added}">
 		<div class="alert alert-info">Item added to cart!</div>
 	</div>
-	<div class="topnav">
-		<div sec:authorize="isAuthenticated()"><a class="active" th:href="@{/logout}">Logout</a></div>
-		<a th:href="@{/user_homepage}">Homepage</a>
-		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
-		<a th:href="@{/user_order_kitchen}">Order Food</a>
-		<a th:href="@{/user_view_cart}">View Cart</a>
-	</div>
-    <h1>Add Items To Your Cart</h1>
+    <h1>Please Select Your Dish Item</h1>
     
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>Item #</th>
-                <th>Item Name</th>
-                <th>Veg?</th>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Made</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="menu : ${items}">
-            	<td th:text="${menu.id}">Item #</td>
-                <td th:text="${menu.itemName}">Item Name</td>
-                <td th:text="${menu.veg}">Veg?</td>
-                <td th:text="${menu.price}">Price</td>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.brand}">Brand</td>
+                <td th:text="${product.madein}">Made in</td>
+                <td th:text="${product.price}">Price</td>
               
                 <td>
-                	<a th:href="@{/add/{id}(id=${menu.id})}">Add Item</a>
+                	<a th:href="@{/add/{id}(id=${product.id})}">Add</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{/delete/{id}(id=${product.id})}">Delete</a>
                 </td>
             </tr>
             
         </tbody>
     </table>
+    
+    	<div><a href="viewcart">Click here to view your cart</a></div>
+    	<div><a href="user_homepage">Return to homepage</a></div>
 </div> 
 
 <div align="center">

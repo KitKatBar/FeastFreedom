@@ -131,6 +131,7 @@ public class KitchenController {
 		model.addAttribute("kitchen", list);
 		return "allindex"; // here its a view name,
 	}
+	
 	@ModelAttribute("daysOpenList")
 	   public List<String> getDaysOpenList() {
 	      List<String> daysOpenList = new ArrayList<String>();
@@ -142,5 +143,5 @@ public class KitchenController {
 	      daysOpenList.add("Saturday");
 	      daysOpenList.add("Sunday");
 	      return daysOpenList;
-	   }
+	}
 }

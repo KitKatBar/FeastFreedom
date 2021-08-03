@@ -41,6 +41,9 @@ public class MenuItem implements Serializable {
 	@JoinColumn(name = "kitchen_id")
 	private Kitchen kitchen;
 	
+	@NotNull
+	private String imageURL;
+
 	public Long getId() {
 		return id;
 	}
@@ -79,6 +82,14 @@ public class MenuItem implements Serializable {
 
 	public void setKitchen(Kitchen kitchen) {
 		this.kitchen = kitchen;
+	}
+	
+	public String getImageURL() {
+		return imageURL;
+	}
+
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
 	}
 	
 	@Override

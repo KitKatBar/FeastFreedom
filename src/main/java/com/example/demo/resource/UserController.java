@@ -103,8 +103,8 @@ public class UserController {
 		return "user_view_menu";
 	}
 	
-	@RequestMapping("/confirm")
-	public String confirmorder(@ModelAttribute("user") User user, Model model) {
+	@RequestMapping("/user_confirm")
+	public String confirmOrder(@ModelAttribute("user") User user, Model model) {
 		//User user = userservice.get(1);
 		//model.addAttribute("user", user);
 		System.out.println(user);
@@ -113,7 +113,7 @@ public class UserController {
 		//List<Product> listProducts = proservice.listAll();
 	//	model.addAttribute("listProducts", listProducts);
 		//model.addAllAttributes("user", user);
-		return "confirm";
+		return "user_confirm_order";
 	}
 	
 	@GetMapping("/user_view_cart")
