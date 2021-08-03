@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Dish Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Please Select Your Dish Item</h1>
+    
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Made</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+            	<td th:text="${product.id}">Product ID</td>
+                <td th:text="${product.name}">Name</td>
+                <td th:text="${product.brand}">Brand</td>
+                <td th:text="${product.madein}">Made in</td>
+                <td th:text="${product.price}">Price</td>
+              
+                <td>
+                	<a th:href="@{'/add/' + ${product.id}}">Add</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${product.id}}">Delete</a>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    
+    	<a href="viewcart">Click here to view your cart </a>
+</div> 
+
+<div align="center">
+		<h2>Your Information</h2>
+		<span>Full name:</span><span th:text="${user.name}"></span><br/>
+		<span>E-mail:</span><span th:text="${user.email}"></span><br/>
+		<span>PhoneNumber:</span><span th:text="${user.phone}"></span><br/>	
+		
+		
+</div>
+   
+</body>
+</html>
