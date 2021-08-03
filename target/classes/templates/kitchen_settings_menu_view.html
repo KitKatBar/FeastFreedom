@@ -8,7 +8,7 @@
 <body>
 	<div class="topnav">
 		<a class="active" th:href="@{/kitchen_settings}">Home Settings</a> <a
-			th:href="@{/view_menu}">View Menu</a> <a href="#kitchen"><span
+			th:href="@{/edit_menu}">Edit Menu</a> <a href="#kitchen"><span
 			th:text="${kitchen.name}"></span></a>
 			<div sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></div>
 	</div>

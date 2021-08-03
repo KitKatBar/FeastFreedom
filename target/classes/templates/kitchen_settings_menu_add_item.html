@@ -13,46 +13,38 @@
 			<div sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></div>
 	</div>
 	<h1>Kitchen Add Menu Items</h1>
-		<form th:action="@{/add_menu_item}" th:object="${menu}" 
-			method="post" enctype="multipart/form-data" >
+		<form th:action="@{/add_menu_item}" th:object="${menu}" method="post" >
 
-			<!-- <p class="error-message" th:if="${#fields.hasGlobalErrors()}"
+			<p class="error-message" th:if="${#fields.hasGlobalErrors()}"
 				th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation
-				error</p> -->
+				error</p>
 
-			<div class="form-group" >
-				<!-- th:classappend="${#fields.hasErrors('itemName')}? 'has-error':''"> -->
+			<div class="form-group" 
+				th:classappend="${#fields.hasErrors('itemName')}? 'has-error':''">
 				<label for="itemName" class="control-label">Item Name</label> <input
 					id="itemName" class="form-control" th:field="*{itemName}" />
-				<!-- <p class="error-message"
+				<p class="error-message"
 					th:each="error: ${#fields.errors('itemName')}"
-					th:text="${error}">Validation error</p> -->
+					th:text="${error}">Validation error</p>
 			</div>
-			<div class="form-group" >
-				<!-- th:classappend="${#fields.hasErrors('veg')}? 'has-error':''"> -->
+			<div class="form-group" 
+				th:classappend="${#fields.hasErrors('veg')}? 'has-error':''">
 				<label>Veg</label>
 				<input type="checkbox" name="veg" th:checked="${veg}" value="true" />
 				<label>Non-Veg</label>
 				<input type="checkbox" name="veg" th:checked="${veg}" value="false" />
-				<!-- <p class="error-message"
+				<p class="error-message"
 					th:each="error : ${#fields.errors('veg')}"
-					th:text="${error}">Validation error</p> -->
+					th:text="${error}">Validation error</p>
 			</div>
-			<div class="form-group" >
-				<!-- th:classappend="${#fields.hasErrors('price')}? 'has-error':''"> -->
+			<div class="form-group" 
+				th:classappend="${#fields.hasErrors('price')}? 'has-error':''">
 				<label for="price" class="control-label">Price</label> <input
 					id="price" class="form-control" th:field="*{price}" />
-				<!-- <p class="error-message"
+				<p class="error-message"
 					th:each="error : ${#fields.errors('price')}"
-					th:text="${error}">Validation error</p> -->
+					th:text="${error}">Validation error</p>
 			</div>
-			<br>
-			<div class="form-group" >
-				<label for="image">Add an image for your menu item:</label>
-				<br> <input type="file" name="image"
-						accept="image/png, image/jpeg" />
-			</div>
-			<br>
 			<div class="form-group">
 				<a href="/edit_menu"><button type="button">Cancel</button></a>
 				<button type="submit">Add</button>

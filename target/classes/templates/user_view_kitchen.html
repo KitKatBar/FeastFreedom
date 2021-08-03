@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <title>Select Kitchen</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
 </head>
 <body>
 	<div class="topnav">
 		<div sec:authorize="isAuthenticated()"><a class="active" th:href="@{/logout}">Logout</a></div>
 		<a th:href="@{/user_homepage}">Homepage</a>
-		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
-		<a th:href="@{/user_order_kitchen}">Order Food</a>
 		<a th:href="@{/user_view_cart}">View Cart</a>
+		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
 	</div>
 	<div align="center">
     <h1>Choose A Kitchen To Order From</h1>

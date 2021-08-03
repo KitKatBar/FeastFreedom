@@ -1,59 +1,75 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8"/>
-<title>Dish Manager</title>
+<meta charset="ISO-8859-1">
+<title>Confirm Order</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
+<style type="text/css">
+	span {
+		display: inline-block;
+		width: 200px;
+		text-align: left;
+	}
+</style>
 </head>
 <body>
-<div align="center">
-	<div th:if="${param.added}">
+	<div class="topnav">
+		<div sec:authorize="isAuthenticated()"><a class="active" th:href="@{/logout}">Logout</a></div>
+		<a th:href="@{/user_homepage}">Homepage</a>
+		<a th:href="@{/user_order_kitchen}">Order Food</a>
+		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
+	</div>
+	<div align="center">
+	<div th:if="${param.deleted}">
 		<div class="alert alert-info">Item added to cart!</div>
 	</div>
-    <h1>Please Select Your Dish Item</h1>
-    
-    <br/><br/>
+		<h2>Please review your cart!</h2>
+		<h2>Cart Items</h2>
+	<br/><br/>
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Brand</th>
-                <th>Made</th>
+                <th>#</th>
+                <th>Item Name</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listProducts}">
-            	<td th:text="${product.id}">Product ID</td>
-                <td th:text="${product.name}">Name</td>
-                <td th:text="${product.brand}">Brand</td>
-                <td th:text="${product.madein}">Made in</td>
-                <td th:text="${product.price}">Price</td>
+            <tr th:each="cart : ${items}">
+            	<td th:text="${cart.id}">#</td>
+                <td th:text="${cart.itemName}">Item Name</td>
+                <td th:text="${cart.price}">Price</td>
               
                 <td>
-                	<a th:href="@{/add/{id}(id=${product.id})}">Add</a>
-                	&nbsp;&nbsp;&nbsp;
-                	<a th:href="@{/delete/{id}(id=${product.id})}">Delete</a>
+                	<a th:href="@{/delete/{id}(id=${cart.id})}">Delete Item</a>
                 </td>
             </tr>
             
         </tbody>
     </table>
-    
-    	<div><a href="viewcart">Click here to view your cart</a></div>
-    	<div><a href="user_homepage">Return to homepage</a></div>
-</div> 
-
-<div align="center">
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<td th:text="${user.cost}">#</td>
+        </tbody>
+    </table>
+		<div align="center">
 		<h2>Your Information</h2>
 		<span>Full name:</span><span th:text="${user.name}"></span><br/>
 		<span>E-mail:</span><span th:text="${user.email}"></span><br/>
-		<span>PhoneNumber:</span><span th:text="${user.phone}"></span><br/>	
-		
+		<span>PhoneNumber:</span><span th:text="${user.phone}"></span><br/>
+		<h2>Your Order Has Been Confirmed!</h2>
 		
 </div>
-   
+		
+	</div>
+	
+	
+
 </body>
 </html>

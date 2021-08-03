@@ -85,11 +85,10 @@ public class MenuItemController {
 		//System.out.println("Password: " + kitchen.getPassword());
 		return "kitchen_settings_menu_add_item";
 	}
-	/*
+	
 	@PostMapping("/add_menu_item")
 	public String saveItem(@ModelAttribute("kitchen") Kitchen kitchen, @Valid @ModelAttribute("menu") MenuItem menu,
-			BindingResult bindingResult, @RequestParam("imageURL") MultipartFile file,
-			RedirectAttributes redirectAttributes) throws IOException {
+			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		//System.out.println("ID: " + kitchen.getId());
 		//System.out.println("Name: " + kitchen.getName());
 		//System.out.println("Email: " + kitchen.getEmail());
@@ -100,9 +99,6 @@ public class MenuItemController {
 		if (bindingResult.hasErrors())
 			return "kitchen_settings_menu_add_item";
 		else {
-			String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-			System.out.println("am i in here?");
-			menu.setImageURL(fileName);
 			//System.out.println("error in savemenu save");
 			//mService.saveMenuItem(kitchen.getId(), menu);
 			//List<MenuItem> temp = new ArrayList<MenuItem>();
@@ -117,20 +113,19 @@ public class MenuItemController {
 			//System.out.println("k_id after object method: " + kitchen.getId());
 			mService.saveMenuItem(kitchen);
 			redirectAttributes.addFlashAttribute("kitchen", kitchen);
-			//System.out.println("k_id after service: " + kitchen.getId());
+			System.out.println("k_id after service: " + kitchen.getId());
 			//System.out.println("ID: " + menu.getId());
 			//System.out.println("Item Name: " + menu.getItemName());
 			//System.out.println("Veg: " + menu.isVeg());
 			//System.out.println("Price: " + menu.getPrice());
 			//kitchen.getMenu().add(menu);
 			//System.out.println("error in savemenu redirect");
-			FileUploadUtil.saveFile(UPLOADED_FOLDER, fileName, file);
 			return "redirect:/edit_menu";
 		}
 		//model.addAttribute("menu", menu);
 		//return "kitchen_register_form_menu_add_item";
-	}*/
-	
+	}
+	/*
 	@PostMapping("/add_menu_item")
 	public String saveItem(@ModelAttribute("kitchen") Kitchen kitchen, @ModelAttribute("menu") MenuItem menu,
 			@RequestParam("image") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException {
@@ -145,7 +140,7 @@ public class MenuItemController {
 		return "redirect:/edit_menu";
 		//model.addAttribute("menu", menu);
 		//return "kitchen_register_form_menu_add_item";
-	}
+	}*/
 	
 	@RequestMapping("/list_items")
 	public String listMenuItems(@ModelAttribute("kitchen") Kitchen k, Model model) {

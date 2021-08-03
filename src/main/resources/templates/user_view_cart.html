@@ -2,7 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Registration Success</title>
+<title>Confirm Order</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/header.css}" />
 <style type="text/css">
 	span {
 		display: inline-block;
@@ -15,11 +16,13 @@
 	<div class="topnav">
 		<div sec:authorize="isAuthenticated()"><a class="active" th:href="@{/logout}">Logout</a></div>
 		<a th:href="@{/user_homepage}">Homepage</a>
-		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
 		<a th:href="@{/user_order_kitchen}">Order Food</a>
-		<a th:href="@{/user_view_cart}">View Cart</a>
+		<a href="#user">Welcome <span th:text="${user.name}"></span></a>
 	</div>
 	<div align="center">
+	<div th:if="${param.deleted}">
+		<div class="alert alert-info">Item added to cart!</div>
+	</div>
 		<h2>Please review your cart!</h2>
 		<h2>Cart Items</h2>
 	<br/><br/>
@@ -61,7 +64,6 @@
 		<span>E-mail:</span><span th:text="${user.email}"></span><br/>
 		<span>PhoneNumber:</span><span th:text="${user.phone}"></span><br/>
 		<div><a href="/user_confirm">Click here to confirm your order</a></div>
-		<div><a href="/user_homepage">Return to homepage</a></div>
 		
 </div>
 		

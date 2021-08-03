@@ -9,12 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class MenuItemServiceImpl {
 
 	@Autowired
 	KitchenRepo kRepo;
-
 	
 	public List<MenuItem> findMenu(Kitchen kitchen) {
 		return kRepo.findById(kitchen.getId()).get().getMenu();
